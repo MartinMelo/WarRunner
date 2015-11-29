@@ -32,7 +32,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>Launcher</mainClass>
+                            <mainClass>Main.Launcher</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
