@@ -10,6 +10,7 @@
 
     <properties>
         <tomcat.version>8.0.28</tomcat.version>
+        <snakeyaml.version>1.15</snakeyaml.version>
     </properties>
     <build>
         <plugins>
@@ -51,6 +52,11 @@
         </plugins>
     </build>
     <dependencies>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>
+        </dependency>
         <!-- Tomcat Embeded -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
