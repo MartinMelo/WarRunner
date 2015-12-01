@@ -3,3 +3,6 @@ appBase: .
 baseDir: .
 warName: app
 nameSpace: /
+systemProperties:
+  user.language: es
+  user.country: arg

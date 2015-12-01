@@ -3,6 +3,8 @@ package Main;
 import Utils.Configuracion;
 import org.apache.catalina.startup.Tomcat;
 
+import java.util.Map;
+
 /**
  * Created by Martin Alejandro Melo
  * on 27/11/2015.
@@ -14,6 +16,7 @@ public class Launcher {
     private final String nameSpace;
     private final String baseDir;
     private final String appBase;
+    private final Map<String, String> systemProperties;
     private Configuracion configuracion;
 
     public Launcher() {
@@ -23,9 +26,28 @@ public class Launcher {
         this.nameSpace = (String) this.configuracion.get("nameSpace");
         this.baseDir = (String) this.configuracion.get("baseDir");
         this.appBase = (String) this.configuracion.get("appBase");
+        this.systemProperties = (Map<String, String>) this.configuracion.get("systemProperties");
+    }
+
+    /**
+     * Carga las properties del enviroment.
+     */
+    private void configurarProperties() {
+        System.setProperty("user.language", this.systemProperties.get("user.language"));
+        System.setProperty("user.country", this.systemProperties.get("user.country"));
+        this.imprimirConfiguracionCargada();
+    }
+
+    /**
+     * Imprime la configuracion modificada desde el archivo de configuracion.
+     */
+    private void imprimirConfiguracionCargada() {
+        System.out.println("Using User Language: " + System.getProperty("user.language"));
+        System.out.println("Using User Country: " + System.getProperty("user.country"));
     }
 
     public void launch() throws Exception {
+        this.configurarProperties();
         final Tomcat server = new Tomcat();
         server.setPort(this.puerto);
         server.setBaseDir(this.baseDir);
@@ -33,8 +55,7 @@ public class Launcher {
         server.getHost().setAppBase(this.appBase);
         server.getHost().setAutoDeploy(true);
         server.getHost().setDeployOnStartup(true);
-
-        server.addWebapp(this.nameSpace, this.warName+".war");
+        server.addWebapp(this.nameSpace, this.warName + ".war");
         server.start();
     }
     public static void main(final String[] args) throws Exception {
