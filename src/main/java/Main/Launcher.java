@@ -4,6 +4,7 @@ import Utils.Configuracion;
 import org.apache.catalina.startup.Tomcat;
 
 import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * Created by Martin Alejandro Melo
@@ -34,7 +35,10 @@ public class Launcher {
      */
     private void configurarProperties() {
         System.setProperty("user.language", this.systemProperties.get("user.language"));
+        System.setProperty("user.language.format", this.systemProperties.get("user.language.format"));
         System.setProperty("user.country", this.systemProperties.get("user.country"));
+        System.setProperty("user.country.format", this.systemProperties.get("user.country.format"));
+        TimeZone.setDefault(TimeZone.getTimeZone( this.systemProperties.get("user.timezone")));
         this.imprimirConfiguracionCargada();
     }
 
@@ -42,8 +46,11 @@ public class Launcher {
      * Imprime la configuracion modificada desde el archivo de configuracion.
      */
     private void imprimirConfiguracionCargada() {
+        System.out.println("Using User Timezone: " + TimeZone.getDefault().getDisplayName());
         System.out.println("Using User Language: " + System.getProperty("user.language"));
+        System.out.println("Using User Language Format: " + System.getProperty("user.language.format"));
         System.out.println("Using User Country: " + System.getProperty("user.country"));
+        System.out.println("Using User Country Format: " + System.getProperty("user.country.format"));
     }
 
     public void launch() throws Exception {

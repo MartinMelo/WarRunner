@@ -5,4 +5,7 @@ warName: app
 nameSpace: /
 systemProperties:
   user.language: es
-  user.country: arg
+  user.language.format: AR
+  user.country: ARG
+  user.country.format: AR
+  user.timezone: America/Buenos_Aires
