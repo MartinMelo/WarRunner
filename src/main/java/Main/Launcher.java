@@ -34,6 +34,7 @@ public class Launcher {
      * Carga las properties del enviroment.
      */
     private void configurarProperties() {
+        System.setProperty("nombreDeSala", this.systemProperties.get("config.nombreDeSala"));
         System.setProperty("user.language", this.systemProperties.get("user.language"));
         System.setProperty("user.language.format", this.systemProperties.get("user.language.format"));
         System.setProperty("user.country", this.systemProperties.get("user.country"));
