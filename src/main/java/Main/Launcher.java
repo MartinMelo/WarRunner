@@ -34,7 +34,7 @@ public class Launcher {
      * Carga las properties del enviroment.
      */
     private void configurarProperties() {
-        System.setProperty("nombreDeSala", this.systemProperties.get("config.nombreDeSala"));
+        //System.setProperty("nombreDeSala", this.systemProperties.get("config.nombreDeSala"));
         System.setProperty("user.language", this.systemProperties.get("user.language"));
         System.setProperty("user.language.format", this.systemProperties.get("user.language.format"));
         System.setProperty("user.country", this.systemProperties.get("user.country"));
@@ -65,6 +65,8 @@ public class Launcher {
         server.getHost().setDeployOnStartup(true);
         server.addWebapp(this.nameSpace, this.warName + ".war");
         server.start();
+        
+        server.getServer().await();
     }
     public static void main(final String[] args) throws Exception {
         Launcher launcher = new Launcher();
