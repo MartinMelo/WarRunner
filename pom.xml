@@ -9,7 +9,7 @@
     <version>2.0</version>
 
     <properties>
-        <tomcat.version>8.5.45</tomcat.version>
+        <tomcat.version>9.0.31</tomcat.version>
         <snakeyaml.version>1.25</snakeyaml.version>
     </properties>
     <build>
