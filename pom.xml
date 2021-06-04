@@ -10,7 +10,7 @@
 
     <properties>
         <tomcat.version>8.5.45</tomcat.version>
-        <snakeyaml.version>1.25</snakeyaml.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
     </properties>
     <build>
         <plugins>
